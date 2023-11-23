@@ -4,7 +4,7 @@ import todosControllerFactory from "./todos/todos.controller";
 import todosServiceFactory from "./todos/todos.service";
 import todoRepositoryFactory from "./todos/todos.repository";
 import mysql from "mysql";
-import { config } from "./database.config";
+import config from "./database.config";
 
 const app = express();
 dotenv.config();

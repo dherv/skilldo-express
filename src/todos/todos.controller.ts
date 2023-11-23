@@ -15,7 +15,13 @@ const todosController = (todosService: IService): IController => {
     },
     create: async (req, res, next): Promise<any> => {
       const { body } = req;
-      const results = await todosService.create(body);
+      let results;
+      try {
+        await todosService.create(body);
+        results = { message: "created" };
+      } catch (error) {
+        results = { error };
+      }
       return res.json(results);
     },
     update: async (req, res, next): Promise<any> => {
@@ -23,7 +29,13 @@ const todosController = (todosService: IService): IController => {
         body,
         params: { id },
       } = req;
-      const results = await todosService.update(body, id);
+      let results;
+      try {
+        await todosService.update(body, id);
+        results = { message: "updated" };
+      } catch (error) {
+        results = { error };
+      }
       return res.json(results);
     },
     delete: async (req, res, next): Promise<any> => {
